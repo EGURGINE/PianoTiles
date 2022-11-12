@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+using DG.Tweening;
 public class GameManager : Singleton<GameManager>
 {
     public List<AudioClip> music = new List<AudioClip>();
@@ -26,6 +26,7 @@ public class GameManager : Singleton<GameManager>
 
             if (progress >= music.Count)
             {
+                SoundManager.Instance.ClearSound();
                 isStart = false;
             }
         }
@@ -45,10 +46,6 @@ public class GameManager : Singleton<GameManager>
 
     public bool isStart;
 
-    private void Start()
-    {
-        StartSET();
-    }
     private void Update()
     {
         if (isStart)
@@ -59,6 +56,7 @@ public class GameManager : Singleton<GameManager>
 
     public void StartSET()
     {
+        OpenRendering();
         progress = 0;
         curtime = 0;
         num = 0;
@@ -66,10 +64,29 @@ public class GameManager : Singleton<GameManager>
         isStart = true;
         sp.StartSet();
     }
+    [SerializeField] private GameObject leftObjs;
+    [SerializeField] private GameObject rightObjs;
+    [SerializeField] private GameObject title;
+    [SerializeField] private GameObject startBtn;
+    private void OpenRendering()
+    {
+        startBtn.SetActive(false);
+        leftObjs.transform.DOMoveX(-3f,0.5f);
+        rightObjs.transform.DOMoveX(3f, 0.5f).OnComplete(()=> title.SetActive(false));
+
+    }
+    public void CloseRendering()
+    {
+        title.SetActive(true);
+        leftObjs.transform.DOMoveX(0f, 0.5f);
+        rightObjs.transform.DOMoveX(0f, 0.5f).OnComplete(() => startBtn.SetActive(true));
+    }
 
     public void Die()
     {
+        SoundManager.Instance.OverSound();
         isStart = false;
+        CloseRendering();
     }
 
 }

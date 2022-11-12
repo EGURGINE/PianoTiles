@@ -1632,8 +1632,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1673441670}
-  - {fileID: 934717557}
   - {fileID: 1523602683}
+  - {fileID: 934717557}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1673,7 +1673,7 @@ RectTransform:
   - {fileID: 1166351768}
   - {fileID: 1599625082}
   m_Father: {fileID: 860220431}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2418,7 +2418,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1523602683
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2437,7 +2437,7 @@ RectTransform:
   - {fileID: 296530160}
   - {fileID: 2104066260}
   m_Father: {fileID: 860220431}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2667,7 +2667,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1536544529}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1817823822}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: StartSET
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &1599625085
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3408,6 +3420,10 @@ MonoBehaviour:
   progressBar: {fileID: 296530161}
   timeTxt: {fileID: 2104066261}
   isStart: 0
+  leftObjs: {fileID: 1931997137}
+  rightObjs: {fileID: 1166351767}
+  title: {fileID: 934717556}
+  startBtn: {fileID: 1599625081}
 --- !u!4 &1817823823
 Transform:
   m_ObjectHideFlags: 0
@@ -3434,6 +3450,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56d66e4c7d4022e4eaeecbdda069cccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOver:
+  - {fileID: 8300000, guid: 3dba54e3a6be3e444956f7aac3a4a95c, type: 3}
+  - {fileID: 8300000, guid: 612229baf3a5f194da70d6d90905d2dd, type: 3}
+  - {fileID: 8300000, guid: 8bcb24ac7beda134b8df156413b76d4a, type: 3}
+  - {fileID: 8300000, guid: a60e27033e4ee9340902c0e5caccc46f, type: 3}
+  gameClear:
+  - {fileID: 8300000, guid: 67a414ab0be6cc9448bca7dead7fc433, type: 3}
+  - {fileID: 8300000, guid: 0aee45ad172b9f041b479a877cfdcb88, type: 3}
+  - {fileID: 8300000, guid: 5f5a5ab2f98365e48b8d417f1bdecab7, type: 3}
+  - {fileID: 8300000, guid: 2e3a9d71ee7f8204fb1fb0dcd0e610c9, type: 3}
 --- !u!1 &1853462889
 GameObject:
   m_ObjectHideFlags: 0
