@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    private int maxSpawnNum => GameManager.Instance.music.Count;
     public List<LinedTiles> linedTiles = new List<LinedTiles>();
 
     private void Awake()
@@ -13,26 +12,39 @@ public class Spawner : MonoBehaviour
         {
             linedTiles.Add(transform.GetChild(i).gameObject.GetComponent<LinedTiles>()); 
         }
-        StartSet();
     }
     public void StartSet()
     {
         for (int i = 0; i < 4; i++)
         {
-            linedTiles[i].setTiles.isTrueTile = Random.Range(0, 4);
+            GameManager.Instance.num++;
+            linedTiles[i].isTrueTile = Random.Range(0, 4);
             linedTiles[i].Setting();
         }
     }
     public void Spawn()
     {
         Sorting();
+        GameManager.Instance.num++;
     }
 
     private void Sorting()
     {
-        for (int i = 4; i < 0; i--)
+        for (int i = 3; i >= 0; i--)
         {
-            linedTiles[i].setTiles = linedTiles[i - 1].setTiles;
+            if(i == 0)
+            {
+                if(GameManager.Instance.num >= GameManager.Instance.music.Count) linedTiles[i].isTrueTile = 5;
+                else
+                {
+                    linedTiles[i].isTrueTile = Random.Range(0, 4);
+                }
+            }
+            else
+            {
+                int num = i - 1;
+                linedTiles[i].isTrueTile = linedTiles[num].isTrueTile;
+            }
             linedTiles[i].Setting();
         }   
     }
