@@ -57,7 +57,7 @@ public class GameManager : Singleton<GameManager>
     public void StartSET()
     {
         OpenRendering();
-        progress = 0;
+        Progress = 0;
         curtime = 0;
         num = 0;
 

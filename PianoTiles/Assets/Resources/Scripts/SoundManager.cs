@@ -16,11 +16,12 @@ public class SoundManager : Singleton<SoundManager>
         yield return new WaitForSeconds(0.5f);
         for (int i = 0; i < gameClear.Length; i++)
         {
-            GameObject go = new GameObject("over");
+            GameObject go = new GameObject("clear" + i);
             AudioSource audio = go.AddComponent<AudioSource>();
             audio.volume = 0.5f;
             audio.clip = gameOver[i];
             audio.Play();
+            Destroy(go, audio.clip.length);
             yield return new WaitForSeconds(0.15f);
         }
         GameManager.Instance.CloseRendering();
@@ -29,11 +30,12 @@ public class SoundManager : Singleton<SoundManager>
     {
         for (int i = 0; i < gameOver.Length; i++)
         {
-            GameObject go = new GameObject("over");
+            GameObject go = new GameObject("over" + i);
             AudioSource audio = go.AddComponent<AudioSource>();
             audio.volume = 0.5f;
             audio.clip = gameOver[i];
             audio.Play();
+            Destroy(go, audio.clip.length);
         }
     }
     public void TrueSound()
