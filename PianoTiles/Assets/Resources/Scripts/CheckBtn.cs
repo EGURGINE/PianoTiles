@@ -25,19 +25,19 @@ public class CheckBtn : MonoBehaviour
         switch (type)
         {
             case EBtnType.D:
-                if(Input.GetKeyDown(KeyCode.D))
+                if(Input.GetKeyDown(KeyCode.UpArrow))
                 Check();
-                break;
+                break;                     
             case EBtnType.F:
-                if (Input.GetKeyDown(KeyCode.F))
+                if (Input.GetKeyDown(KeyCode.DownArrow))
                     Check();
                 break;
             case EBtnType.J:
-                if (Input.GetKeyDown(KeyCode.J))
+                if (Input.GetKeyDown(KeyCode.LeftArrow))
                     Check();
                 break;
             case EBtnType.K:
-                if (Input.GetKeyDown(KeyCode.K))
+                if (Input.GetKeyDown(KeyCode.RightArrow))
                     Check();
                 break;
         }
