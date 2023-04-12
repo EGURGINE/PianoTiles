@@ -5,6 +5,10 @@ using UnityEngine.Networking;
 public class GoogleSheet : MonoBehaviour
 {
     string data = "https://docs.google.com/spreadsheets/d/1cftybXIQtD555O3vO4o0oN2CBU5Z98eHxc0NbjsFWA8/export?format=tsv&range=A:A";
+
+
+    [SerializeField] private AudioClip[] note;
+    public List<AudioClip> musicImport = new List<AudioClip>();
     // Start is called before the first frame update
     void Awake()
     {
@@ -16,7 +20,6 @@ public class GoogleSheet : MonoBehaviour
         yield return www.SendWebRequest();
         SetMusicSO(www.downloadHandler.text);
     }
-    public List<AudioClip> musicList = new List<AudioClip>();
     void SetMusicSO(string tsv)
     {
         string[] row = tsv.Split('\n');
@@ -28,10 +31,10 @@ public class GoogleSheet : MonoBehaviour
             string[] column = row[i].Split('\t');
             for (int j = 0; j < columnSize; j++)
             {
-                var d = Resources.Load<AudioClip>("Audio/" + column[j]);
-                musicList.Add(d);
-                print(d);
+                musicImport.Add(note[int.Parse(column[j])]);
             }
         }
+
+        GameManager.Instance.music = musicImport;
     }
 }
