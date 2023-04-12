@@ -10,7 +10,7 @@ public class GoogleSheet : MonoBehaviour
     [SerializeField] private AudioClip[] note;
     public List<AudioClip> musicImport = new List<AudioClip>();
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         StartCoroutine(TryDataRoad());
     }
